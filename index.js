@@ -225,19 +225,15 @@ class Level {
 		return true;
 	}
 	generateDummyWays() {
-		const linesCount = Math.floor(Math.random() * 3) + 3;
+		const linesCountH = Math.floor(Math.random() * 3) + 3;
+		const linesCountV = Math.floor(Math.random() * 3) + 3;
 		let horizontalLines = [];
 		let verticalLines = [];
-		horizontalLines.push(this.createHorizontal(horizontalLines));
-		verticalLines.push(this.createVertical(verticalLines));
-		for (let i = 0; i < linesCount-2; i++) {
-			const isVertical = Math.random() < 0.5;
-
-			if (isVertical) {
-				verticalLines.push(this.createVertical(verticalLines));
-			} else {
-				horizontalLines.push(this.createHorizontal(horizontalLines));
-			}
+		for (let i = 0; i < linesCountH; i++) {
+			horizontalLines.push(this.createHorizontal(horizontalLines));
+		}
+		for (let i = 0; i < linesCountV; i++) {
+			verticalLines.push(this.createVertical(verticalLines));
 		}
 	}
 
