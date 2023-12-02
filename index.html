@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;subset=cyrillic"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i|Tinos:400,400i&amp;subset=cyrillic"
+			rel="stylesheet"
+		/>
+		<script
+			type="text/javascript"
+			src="/shared/3rdparty/jquery/jquery.js"
+			language="javascript1.1"
+		></script>
+		<script src="index.js"></script>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			body,
+			html {
+				height: 100%;
+			}
+			body {
+				background-color: #000000;
+				color: #ffffff;
+			}
+			h1 {
+				font-family: "Playfair Display";
+				font-size: 30px;
+				padding: 10px 0px;
+				margin: 0px;
+			}
+			.field-box {
+				border: 2px solid #d0d0d0;
+				float: left;
+			}
+			.field {
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				width: 1000px;
+				height: 600px;
+			}
+			.column-container {
+				display: flex;
+			}
+			.field .tile {
+			display: flex;
+				width: 25px;
+				height: 25px;
+				background-size: 100%;
+				background-image: url(images/tile-.png);
+			}
+			.field .tileW {
+				background-image: url(images/tile-W.png);
+			}
+			.field .tileE {
+				background-image: url(images/tile-E.png);
+			}
+			.field .tileP {
+				background-image: url(images/tile-P.png);
+			}
+			.tileHP {
+				background-image: url(images/tile-HP.png) !important;
+			}
+			.tileSW {
+				background-image: url(images/tile-SW.png) !important;
+			}
+			.field .tile .health {
+				background-color: #ff0000;
+				left: 0px;
+				top: 0px;
+				height: 3px;
+			}
+			.field .tileP .health {
+				background-color: #00ff00;
+				left: 0px;
+				top: 0px;
+				height: 3px;
+			}
+			.inventory-box {
+				border: 2px solid #d0d0d0;
+				float: left;
+			}
+			.inventory {
+				display: flex;
+				width: 800px;
+				height: auto;
+			}
+			.inventory-item {
+				display: flex;
+				flex-direction: column-reverse;
+				height: 50px;
+				width: 50px;
+				background-size: 100%;
+			}
+			.item-counter {
+				margin-bottom: 0px;
+				padding-left: 20px;
+				color: #d0d0d0;
+			}
+			.cl {
+				clear: both;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Игровое поле</h1>
+		<div class="field-box"><div class="field"></div></div>
+		<div class="cl"></div>
+		<button onclick="game.clearField()" id="clear">Очистить игровое поле</button>
+		<button onclick="game.init()">Начать новую игру</button>
+		<input type="checkbox" name="generate-corridors" id="gen-cor">
+		<label for="gen-cor">Генерировать коридоры вместо прямых</label>
+		<!-- <h1>Инвентарь</h1>
+		Я хотел реализовать инвентарь, но не успел
+		TODO: Обязательно доделать для портфолио
+		<div class="inventory-box">
+			<div class="inventory">
+				<button
+					class="inventory-item tileSW"
+					name="Sword"
+					id="Sword"
+					title="Даст тебе х2 урон на следующий удар"
+				>
+					<label for="Sword" class="item-counter">[x0]</label>
+				</button>
+				<button
+					class="inventory-item tileHP"
+					name="Health-potion"
+					id="Health-potion"
+					title="Вылечит тебя в сложной ситуации, но потратит ход"
+				>
+					<label for="Health-potion" class="item-counter">[x0]</label>
+				</button>
+			</div>
+		</div> -->
+
+		<script>
+			var game = new Game();
+			game.init();
+			game.applyEventListener();
+		</script>
+	</body>
+</html>
